@@ -1,14 +1,20 @@
-
+from flask import Flask, render_template, request
 from extractors.indeed import extract_indeed_jobs
 from extractors.wwr import extract_wwr_jobs
 
-keyword = input("What do you want to search for?")
+app = Flask("JobScrapper")
 
-indeed = extract_indeed_jobs(keyword)
-wwr = extract_wwr_jobs(keyword)
+@app.route("/")
+def home():
+    return render_template("home.html", name="nico")
 
-jobs = indeed + wwr
+@app.route("/search")
+def hello():
+    keyword = request.args.get("keyword")
+    indeed = extract_indeed_jobs(keyword)
+    wwr = extract_wwr_jobs(keyword)
+    jobs = indeed + wwr
+    return render_template("search.html", keyword=keyword , jobs=jobs)
 
-for job in jobs:
-    print(job)
-    print("/////\n/////")
+app.run("0.0.0.0")
+

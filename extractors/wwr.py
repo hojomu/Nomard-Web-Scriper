@@ -23,9 +23,9 @@ def extract_wwr_jobs(keyword):
                 title = anchor.find('span', class_='title')
                 job_data = {
                     'link' : f"https://weworkremotely.com{link}",
-                    'company' : company.string,
-                    'region' : region.string,
-                    'position' : title.string
+                    'company' : company.string.replace(","," "),
+                    'location' : region.string.replace(","," "),
+                    'position' : title.string.replace(","," ")
                 }
                 results.append(job_data)
         # 나중에 파일에 넣을 수 있게 return
