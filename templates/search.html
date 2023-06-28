@@ -10,17 +10,17 @@
 <body>
 <main class="container">
     <hgroup>
-        <h1>Search Results for "{{keyword}}"</h1>
-        <a target="_blank" href="/export?keyword={{keyword}}">Export to file</a>
+        <h1>"{{keyword}}" 의 검색 결과</h1>
+        <a target="_blank" href="/export?keyword={{keyword}}">파일로 저장하기</a>
     </hgroup>
    <figure>
    <table role="grid">
     <thead>
         <tr>
-            <th>position</th>
-            <th>company</th>
-            <th>location</th>
-            <th>link</th>
+            <th>제목</th>
+            <th>회사</th>
+            <th>근무 지역</th>
+            <th>자세히 보기</th>
         </tr>
     </thead>
     <tbody>
@@ -29,7 +29,7 @@
             <td>{{job.position}}</td>
             <td>{{job.company}}</td>
             <td>{{job.location}}</td>
-            <td><a href="{{job.link}}" target="_blank">Apply now &rarr;</a></td>
+            <td><a href="{{job.link}}" target="_blank">지원하기 &rarr;</a></td>
         </tr>
     {% endfor %}
     </tbody>
